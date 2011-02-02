@@ -147,7 +147,7 @@ endif
 let s:NERDTreeBufName = 'NERD_tree_'
 
 let s:tree_wid = 2
-let s:tree_markup_reg = '^[ `|▼▶]*[\-+~ ]*'
+let s:tree_markup_reg = '^[ `|▾▸]*[\-+~ ]*'
 let s:tree_up_dir_line = '.. (up a dir)'
 
 "the number to add to the nerd tree buffer name to make the buf name unique
@@ -1316,15 +1316,15 @@ function! s:TreeFileNode._renderToString(depth, drawText, vertMap, isLastChild)
         "get all the leading spaces and vertical tree parts for this line
         if a:depth > 1
             for j in a:vertMap[0:-2]
-                let treeParts = treeParts . '  '
+                let treeParts = treeParts . ' '
             endfor
         endif
 
         if self.path.isDirectory
             if self.isOpen
-                let treeParts = treeParts . '▼ '
+                let treeParts = treeParts . '▾'
             else
-                let treeParts = treeParts . '▶ '
+                let treeParts = treeParts . '▸'
             endif
         else
             let treeParts = treeParts . ''
@@ -3057,7 +3057,7 @@ function! s:getPath(ln)
     endif
 
     " in case called from outside the tree
-    "if line !~ '^ *[|`▶▼ ]' || line =~ '^$'
+    "if line !~ '^ *[|`▸▾ ]' || line =~ '^$'
         "return {}
     "endif
 
